@@ -1,0 +1,23 @@
+{
+  "name": "search-app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node_modules/.bin/supervisor ./bin/www"
+  },
+  "dependencies": {
+    "async": "^2.4.1",
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "db-migrate": "^0.10.0-beta.20",
+    "db-migrate-pg": "^0.1.11",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "jade": "~1.11.0",
+    "mongodb": "^2.2.9",
+    "morgan": "~1.8.1",
+    "pg-promise": "^5.9.0",
+    "serve-favicon": "~2.4.2",
+    "supervisor": "^0.12.0"
+  }
+}
