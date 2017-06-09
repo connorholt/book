@@ -14,11 +14,47 @@ router.get('/', function (req, res, next) {
     res.render('index', {title: 'Express'});
 });
 
+// Поиск по периоду дат
+// передаем конкретный отель или по все  и интервал дат
+// надо проверить еще что можно разместить определнное количество людей
+// добавить максимальное и минимальное количество сколько может жить людей
+// подумать на счет времени
+// События получаем по очереди:
+// 1. бронирование, надо закрыть даты
+// 2. удаление брони, открыть даты
+// 3. что-то с датами и номерами, изменить инфу
+// 4. удаление блока, отелия, номера, поменять везде инфу и count
+// 5. открыть продажу. добавить новые даты
+// 6. закрыть продажи
+// 7.
+router.get('/search/period', function(req, res, next) {
+    return res.json([
+        {
+            hotel_id: 1,
+            category_id: 1,
+            room_id: 2,
+            date_from: new Date(),
+            date_to: new Date(),
+        }
+    ]);
+});
+
+router.get('/search/date', function(req, res, next) {
+    return res.json([
+        {
+            hotel_id: 1,
+            category_id: 1,
+            count: 2,
+            date: new Date(),
+        }
+    ]);
+});
+
 router.get('/data/from/db', function (req, res, next) {
 
 
 
-    db.one("SELECT $1 AS value", 121)
+    db.one("SELECT $1 AS value", 456)
         .then(function (data) {
             console.log("DATA:", data.value);
         })
@@ -27,7 +63,7 @@ router.get('/data/from/db', function (req, res, next) {
         });
 
 
-    return res.json(['a', 33]);
+    return res.json(['a', 12]);
 });
 
 router.post('/data/into/db', function(req, res, next) {

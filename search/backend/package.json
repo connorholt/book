@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node_modules/.bin/supervisor ./bin/www"
+    "start": "node_modules/.bin/pm2-docker start ./bin/www --watch -i max"
   },
   "dependencies": {
     "async": "^2.4.1",
@@ -17,6 +17,7 @@
     "mongodb": "^2.2.28",
     "morgan": "~1.8.1",
     "pg-promise": "^5.9.0",
+    "pm2": "^2.5.0",
     "serve-favicon": "~2.4.2",
     "supervisor": "^0.12.0"
   }
