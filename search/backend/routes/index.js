@@ -18,7 +18,7 @@ router.get('/data/from/db', function (req, res, next) {
 
 
 
-    db.one("SELECT $1 AS value", 55)
+    db.one("SELECT $1 AS value", 121)
         .then(function (data) {
             console.log("DATA:", data.value);
         })

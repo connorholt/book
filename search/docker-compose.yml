@@ -2,6 +2,8 @@ version: "2"
 services:
   web:
     build: ./backend
+    volumes:
+          - ./backend:/opt/app
     ports:
       - "3000:3000"
     links:
@@ -9,8 +11,6 @@ services:
     environment:
       PORT: 3000
       CONNECTION_STRING_DEV: postgres://user:password@db/db
-    volumes:
-      - /opt/app:/backend
   mongo:
       image: mongo
       volumes:
