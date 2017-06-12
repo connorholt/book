@@ -16,6 +16,7 @@
     "jade": "~1.11.0",
     "mongodb": "^2.2.28",
     "morgan": "~1.8.1",
+    "pg-monitor": "^0.8.1",
     "pg-promise": "^5.9.0",
     "pm2": "^2.5.0",
     "serve-favicon": "~2.4.2",

@@ -20,3 +20,11 @@ sudo docker-compose exec web node node_modules/db-migrate/bin/db-migrate --confi
 sudo docker-compose exec db bash
 su postgres     
 psql
+
+
+https://github.com/vitaly-t/pg-promise-demo/blob/master/JavaScript/index.js
+
+sudo service mongod stop
+
+
+// список функционала, свагер, безопасность, авторизация, логирование,
