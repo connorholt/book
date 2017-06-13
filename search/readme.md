@@ -15,7 +15,7 @@ sudo docker exec -t -i 637e8bf9415f bash
 
 миграция
 sudo docker-compose exec web node node_modules/db-migrate/bin/db-migrate --config config/database.json -e dev up
-
+sudo docker-compose exec web node_modules/.bin/db-migrate --config config/database.json -e dev create addCoulmns
 
 sudo docker-compose exec db bash
 su postgres     

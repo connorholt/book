@@ -8,24 +8,24 @@ class PeriodRepository {
         this.pgp = pgp;
     }
 
-    all(dateFrom, dateTo) {
-        return this.db.any(sql.all, [dateFrom, dateTo]);
+    all(dateFrom, dateTo, countPersons) {
+        return this.db.any(sql.all, [dateFrom, dateTo, countPersons]);
     }
 
-    total() {
-        return this.db.one('SELECT count(*) FROM search_periods', [], a => +a.count);
+    total(dateFrom, dateTo, countPersons) {
+        return this.db.one(sql.total, [dateFrom, dateTo, countPersons], date => +data.count);
     }
 
-    findByHotelId(name) {
-        return this.db.oneOrNone('SELECT * FROM search_periods WHERE hotel_id = $1', name);
+    findByHotelId(hotelId, dateFrom, dateTo, countPersons) {
+        return this.db.any(sql.findByHotelId, [dateFrom, dateTo, countPersons, hotelId]);
     }
 
-    findByCategoryId(name) {
-        return this.db.oneOrNone('SELECT * FROM search_periods WHERE name = $1', name);
+    findByCategoryId(categoryId, dateFrom, dateTo, countPersons) {
+        return this.db.any(sql.findByHotelId, [dateFrom, dateTo, countPersons, categoryId]);
     }
 
-    findByRoomId(name) {
-        return this.db.oneOrNone('SELECT * FROM search_periods WHERE name = $1', name);
+    findByRoomId(roomId, dateFrom, dateTo, countPersons) {
+        return this.db.any(sql.findByHotelId, [dateFrom, dateTo, countPersons, roomId]);
     }
 }
 

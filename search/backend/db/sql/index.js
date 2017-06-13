@@ -20,7 +20,11 @@ let path = require('path');
 
 module.exports = {
     period: {
-        all: sql('period/all.sql')
+        all: sql('period/all.sql'),
+        total: sql('period/total.sql'),
+        findByHotelId: sql('period/findByHotelId.sql'),
+        findByCategoryId: sql('period/findByCategoryId.sql'),
+        findByRoomId: sql('period/findByRoomId.sql'),
     }
 };
 

@@ -1,4 +1,4 @@
-SELECT *
+SELECT COUNT(*) AS count
 FROM search_periods
 WHERE
 $1 BETWEEN date_from AND date_to
