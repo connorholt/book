@@ -3,7 +3,7 @@ services:
   web:
     build: ./backend
     volumes:
-          - ./backend:/opt/app
+      - ./backend:/opt/app
     ports:
       - "3000:3000"
     links:
