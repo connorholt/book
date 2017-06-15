@@ -1,0 +1,36 @@
+version: "2"
+services:
+  web:
+    build: ./search/backend
+    volumes:
+      - ./search/backend:/opt/app
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      CONNECTION_STRING_DEV: postgres://user:password@db/db
+  frontend:
+    build: ./frontend/app
+    volumes:
+      - ./frontend/app:/opt/frontend
+    ports:
+      - "3001:3001"
+    links:
+      - mongo
+    environment:
+      PORT: 3001
+  mongo:
+    image: mongo
+    volumes:
+      - /data/mongodb/db:/data/db
+    ports:
+      - "27017:27017"
+  db:
+    restart: always
+    image: postgres
+    expose:
+      - "5432"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+      POSTGRES_DB: db
