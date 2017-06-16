@@ -1,16 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Content from './components/app';
+import { render } from 'react-dom'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import App from './containers/App';
+// import reducer from './reducers'
 
-const App = () => (
-    <MuiThemeProvider>
-        <Content />
-    </MuiThemeProvider>
-);
+// const store = createStore(reducer);
+// <Provider store={store}> </Provider>
 
 document.addEventListener('DOMContentLoaded', () => {
-    ReactDOM.render(
+    render(
         <App />,
         document.getElementById('root')
     );
