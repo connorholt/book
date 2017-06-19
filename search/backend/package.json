@@ -6,6 +6,7 @@
     "start": "node_modules/.bin/pm2-docker start ./bin/www --watch -i max"
   },
   "dependencies": {
+    "amqplib": "^0.5.1",
     "async": "^2.4.1",
     "bluebird": "^3.5.0",
     "body-parser": "~1.17.1",

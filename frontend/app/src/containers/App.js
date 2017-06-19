@@ -1,10 +1,13 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 const Main = () => (
     <MuiThemeProvider>
-        <AppBar title="My AppBar" />
+        <FloatingActionButton className="default" mini={true}>
+            <ContentAdd />
+        </FloatingActionButton>
     </MuiThemeProvider>
 );
 
