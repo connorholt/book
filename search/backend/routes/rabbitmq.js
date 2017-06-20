@@ -8,10 +8,12 @@ const router = express.Router();
 router.get('/send', (req, res, next) => {
     amqp.connect('amqp://rabbitmq', (err, conn) => {
         conn.createChannel((err, ch) => {
-            let q = 'hello';
+            let q = 'queue_name';
 
-            ch.assertQueue(q, {durable: false});
-            ch.sendToQueue(q, new Buffer('Hello World!'));
+            ch.assertQueue(q, {durable: true});
+            for (let i =0; i < 1000; i++) {
+                ch.sendToQueue(q, new Buffer('Hello World! №' + i), {persistent: true});
+            }
 
             console.log(" [x] Sent 'Hello World!'");
         });
@@ -27,16 +29,18 @@ router.get('/send', (req, res, next) => {
 
 amqp.connect('amqp://rabbitmq', (err, conn) => {
     conn.createChannel((err, ch) => {
-        let q = 'hello';
+        let q = 'queue_name';
 
-        ch.assertQueue(q, {durable: false});
-        console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q);
+        ch.assertQueue(q, {durable: true});
+        ch.prefetch(1);
         ch.consume(q, (msg) => {
             setTimeout(() => {
-                console.log(" [x] Received %s", msg.content.toString());
-            }, 5000);
 
-        }, {noAck: true});
+                console.log(" [x] Received %s", msg.content.toString());
+                ch.ack(msg);
+            }, (Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000));
+
+        }, {noAck: false});
     });
 });
 

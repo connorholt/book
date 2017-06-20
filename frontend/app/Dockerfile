@@ -9,4 +9,4 @@ ADD . /opt/frontend
 
 EXPOSE 3000
 
-CMD ["npm", "build", "start"]
+CMD ["npm", "start"]

@@ -28,3 +28,5 @@ sudo service mongod stop
 
 
 // список функционала, свагер, безопасность, авторизация, логирование,
+
+sudo docker-compose exec rabbitmq rabbitmqctl list_queues messages_ready messages_unacknowledged

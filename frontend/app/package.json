@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node_modules/.bin/pm2-docker start ./bin/www --watch",
+    "start": "webpack & node_modules/.bin/pm2-docker start ./bin/www --watch",
     "build": "webpack",
     "build:production": "cross-env NODE_ENV=production npm run build"
   },
