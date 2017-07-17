@@ -18,11 +18,8 @@ export default class CreateHotelForm extends React.Component {
     }
 
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
-
         axios.post('/user', {
-            firstName: 'Fred',
-            lastName: 'Flintstone'
+            value: this.state.value
         })
             .then(function (response) {
                 console.log(response);

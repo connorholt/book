@@ -21,6 +21,18 @@ services:
       - mongo
     environment:
       PORT: 3001
+  structure:
+    image: golang:1.4
+    working_dir: /opt/structure
+    command: go run main.go
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./structure:/opt/structure
+    links:
+      - db_structure
+    environment:
+      - DB_NAME=advanced-golang-db
   mongo:
     image: mongo
     volumes:
@@ -32,6 +44,15 @@ services:
     image: postgres
     expose:
       - "5432"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+      POSTGRES_DB: db
+  db_structure:
+    restart: always
+    image: postgres
+    expose:
+      - "5433"
     environment:
       POSTGRES_PASSWORD: password
       POSTGRES_USER: user

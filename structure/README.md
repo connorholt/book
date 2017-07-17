@@ -1,1 +1,1 @@
-flask + postgresql
+flask/go/erlang + postgresql
